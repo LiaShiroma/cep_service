@@ -2,91 +2,62 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Buscando endereço com Jquery</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Buscando endereço</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-
-            <div class="col-md-6 col-12">
-                <form>
-                    <div class="form-group">
-                        <label for="cep">Cep</label>
-                        <input type="number" class="form-control" id="cep">
-                    </div>
-                    <div class="form-group">
-                        <label for="address">Endereço</label>
-                        <input type="text" class="form-control" id="address">
-                    </div>
-                    <div class="form-group">
-                        <label for="complement">Complemento</label>
-                        <input type="text" class="form-control" id="complement">
-                    </div>
-                    <div class="form-group">
-                        <label for="neighborhood">Bairro</label>
-                        <input type="text" class="form-control" id="neighborhood">
-                    </div>
-                    <div class="form-group">
-                        <label for="city">Cidade</label>
-                        <input type="text" class="form-control" id="city">
-                    </div>
-                    <div class="form-group">
-                        <label for="uf">UF</label>
-                        <input type="text" class="form-control" id="uf">
-                    </div>
-                    <div class="form-group">
-                        <label for="unity">Unidade</label>
-                        <input type="text" class="form-control" id="unity">
-                    </div>
-                    <div class="form-group">
-                        <label for="ibge">IBGE</label>
-                        <input type="number" class="form-control" id="ibge">
-                    </div>
-                    <div class="form-group">
-                        <label for="gia">GIA</label>
-                        <input type="number" class="form-control" id="gia">
-                    </div>
-
-                </form>
-            </div>
-
-        </div>
-    </div>
-
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-
-    <script>
-        $(document).ready(function () {
-            $("#cep").change(function () {
-                var cep = $("#cep").val();
-
-                $.get("https://viacep.com.br/ws/" + cep + "/json/", function (data) {
-
-                    $("#address").val(data.logradouro);
-                    $("#complement").val(data.complemento);
-                    $("#neighborhood").val(data.bairro);
-                    $("#city").val(data.localidade);
-                    $("#uf").val(data.uf);
-                    $("#neighborhood").val(data.bairro);
-                    $("#unity").val(data.unidade);
-                    $("#ibge").val(data.ibge)
-                    $("#gia").val(data.gia);
-                });
-            });
-        });
-
-    </script>
-
-
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-12">
+				<div class="map">
+					<img src="assets/image/map-pin.jpg" width="100%">
+				</div>
+			</div>
+			<div class="col-lg-8 col-12">
+				<div class="main-content">
+					<form name="result" id="result">
+						<div class="search">
+							<h1>Buscar CEP:</h1>
+							<span class="erro"></span>
+							<div class="form-group">
+								<input type="text" class="form-control" id="cep" placeholder="Digite o cep desejado">
+								<span class="error"></span>
+							</div>
+							<button type="button" class="btn btn-find" id="find">Buscar</button>
+						</div>
+						<div class="cep-result">
+							<div class="form-group">
+								<label for="address">Endereço</label>
+								<input type="text" class="form-control" id="address" name="address">
+							</div>
+							<div class="form-group">
+								<label for="neighborhood">Bairro</label>
+								<input type="text" class="form-control" id="neighborhood" name="neighborhood">
+							</div>
+								<div class="form-group">
+									<label for="city">Cidade</label>
+									<input type="text" class="form-control" id="city" name="city">
+								</div>
+								<div class="form-group">
+									<label for="uf">UF</label>
+									<input type="text" class="form-control" id="uf" name="uf">
+								</div>
+							</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+		crossorigin="anonymous"></script>
+	<script src="script.js"></script>
 </body>
